@@ -1,10 +1,13 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { createAppContainer } from "react-navigation";
-import { createStackNavigator } from "react-navigation-stack";
+// import { createStackNavigator } from "react-navigation-stack";
+// import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createDrawerNavigator } from 'react-navigation-drawer';
 
 import HomeScreen from './components/HomeScreen';
 import AboutScreen from './components/AboutScreen';
+import ContactScreen from './components/ContactScreen';
 
 
 export default class App extends React.Component {
@@ -13,16 +16,51 @@ export default class App extends React.Component {
   }
 }
 
-const AppNavigator = createStackNavigator({
+// Stack Navigator
+// const AppNavigator = createStackNavigator({
+//   Home: {
+//     screen: HomeScreen
+//   },
+//   About: {
+//     screen: AboutScreen
+//   },
+// },
+// {
+//   initialRouteName: "Home"
+// });
+
+// Tab Navigator
+// const AppNavigator = createBottomTabNavigator({
+//   Home: {
+//     screen: HomeScreen
+//   },
+//   About: {
+//     screen: AboutScreen
+//   },
+//   Contact: {
+//     screen: ContactScreen
+//   }
+// },
+// {
+//   initialRouteName: "Home"
+// });
+
+const AppNavigator = createDrawerNavigator({
   Home: {
     screen: HomeScreen
   },
   About: {
     screen: AboutScreen
   },
+  Contact: {
+    screen: ContactScreen
+  }
 },
 {
-  initialRouteName: "Home"
+  initialRouteName: "Home",
+  contentOptions: {
+    activeTintColor: '#e91e63'
+  }
 });
 
 const AppContainer = createAppContainer(AppNavigator);
